@@ -49,10 +49,9 @@ export default function ChatWindow() {
 
       setMessages((prev) => [...prev, botMessage]);
 
-      // 🔊 SAFE AUDIO (no crash if file missing)
       const audio = new Audio("/notification.mp3");
       audio.play().catch(() => {});
-    } catch (error) {
+    } catch {
       const errorMessage: MessageType = {
         id: Date.now() + 2,
         content: "Something went wrong. Please try again.",
@@ -71,23 +70,23 @@ export default function ChatWindow() {
   }, [messages]);
 
   return (
-    <div className={`${darkMode ? "bg-gray-900 text-white" : "bg-gray-100"} h-screen flex flex-col items-center`}>
+    <div className={`${darkMode ? "bg-gray-900 text-white" : "bg-gray-100"} min-h-screen flex flex-col items-center px-2 sm:px-4`}>
 
       {/* TOP BAR */}
-      <div className="w-full flex justify-between items-center px-6 py-4 max-w-5xl">
-        <h1 className="text-xl font-semibold">Metawurks AI </h1>
+      <div className="w-full flex justify-between items-center px-3 sm:px-6 py-4 max-w-5xl">
+        <h1 className="text-lg sm:text-xl font-semibold">Metawurks AI</h1>
 
-        <div className="flex gap-3">
+        <div className="flex gap-2 sm:gap-3">
           <button
             onClick={() => setMessages([])}
-            className="text-sm text-gray-500 hover:text-black"
+            className="text-xs sm:text-sm text-gray-500 hover:text-black"
           >
             Clear
           </button>
 
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="px-3 py-1 rounded-md bg-black text-white text-sm"
+            className="px-2 sm:px-3 py-1 rounded-md bg-black text-white text-xs sm:text-sm"
           >
             {darkMode ? "Light" : "Dark"}
           </button>
@@ -96,16 +95,19 @@ export default function ChatWindow() {
 
       {/* HEADER */}
       {messages.length === 0 && (
-        <h2 className="text-3xl font-medium text-gray-500 mb-6">
+        <h2 className="text-2xl sm:text-3xl font-medium text-gray-500 mb-4 sm:mb-6 text-center">
           Ready when you are.
         </h2>
       )}
 
       {/* CHAT */}
       <div className="w-full flex justify-center">
-        <div className={`${darkMode ? "bg-gray-800" : "bg-white"} w-full max-w-3xl rounded-2xl shadow-sm h-[70vh] flex flex-col`}>
-
-          <div className="flex-1 overflow-y-auto px-6 py-4 space-y-3">
+        <div
+          className={`${darkMode ? "bg-gray-800" : "bg-white"} 
+          w-full max-w-3xl rounded-2xl shadow-sm 
+          h-[75vh] sm:h-[70vh] flex flex-col`}
+        >
+          <div className="flex-1 overflow-y-auto px-3 sm:px-6 py-4 space-y-3">
             {messages.map((msg) => (
               <Message key={msg.id} {...msg} darkMode={darkMode} />
             ))}
@@ -123,10 +125,10 @@ export default function ChatWindow() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="p-4 border-t">
+          {/* STICKY INPUT */}
+          <div className="p-2 sm:p-4 border-t sticky bottom-0 bg-inherit">
             <InputArea onSend={sendMessage} darkMode={darkMode} />
           </div>
-
         </div>
       </div>
     </div>

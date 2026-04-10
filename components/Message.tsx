@@ -13,7 +13,7 @@ export default function Message({ content, role, timestamp, darkMode }: Props) {
   return (
     <div className={`w-full flex ${isUser ? "justify-end" : "justify-start"} animate-fadeIn`}>
       <div
-        className={`px-4 py-3 rounded-2xl max-w-[70%] break-words shadow-sm ${
+        className={`px-4 py-3 rounded-2xl max-w-[85%] sm:max-w-[70%] break-words shadow-sm ${
           isUser
             ? "bg-black text-white"
             : darkMode
@@ -21,11 +21,8 @@ export default function Message({ content, role, timestamp, darkMode }: Props) {
             : "bg-white border text-black"
         }`}
       >
-        {/* ✅ FIXED */}
         <div className="text-sm leading-relaxed">
-          <ReactMarkdown>
-            {content}
-          </ReactMarkdown>
+          <ReactMarkdown>{content}</ReactMarkdown>
         </div>
 
         <span className="text-[10px] text-gray-400 mt-1 block">
