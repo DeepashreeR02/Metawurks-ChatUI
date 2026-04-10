@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
+/* Theme Variables */
 :root {
-  --background: #ffffff;
+  --background: #f3f4f6; /* light gray (better than pure white) */
   --foreground: #171717;
 }
 
+/* Tailwind Theme Mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,6 +14,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark Mode Support (bonus) */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +22,58 @@
   }
 }
 
+/* Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar (clean UI) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Fade-in Animation for Messages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* Input Focus Glow (nice UX touch) */
+input:focus {
+  outline: none;
+}
+
+/* Button smooth transition */
+button {
+  transition: all 0.2s ease-in-out;
 }
