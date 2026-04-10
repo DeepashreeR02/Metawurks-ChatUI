@@ -21,14 +21,13 @@ A clean, responsive AI chat interface built with **Next.js 16**, **React 19**, a
 
 ## Tech Stack
 
-| Layer         | Technology |
-| Framework     | Next.js 16 (App Router) |
-| UI Library    | React 19 |
-| Styling       | Tailwind CSS v4 |
-| Markdown      | react-markdown ^10 |
-| Language      | TypeScript 5 |
-| Fonts         | Geist Sans & Geist Mono (Google Fonts) |
-| Build Tool    | Turbopack (via Next.js dev server) |
+Framework - Next.js 16 (App Router) 
+UI Library - React 19 
+Styling - Tailwind CSS v4 
+Markdown - react-markdown ^10 
+Language - TypeScript 5
+Fonts - Geist Sans & Geist Mono (Google Fonts)
+Build Tool - Turbopack (via Next.js dev server)
 
 ---
 
